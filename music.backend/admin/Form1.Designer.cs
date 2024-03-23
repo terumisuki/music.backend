@@ -30,9 +30,8 @@
         {
             tabControl1 = new TabControl();
             tabPageAlbum = new TabPage();
+            btnSearchAlbum = new Button();
             tabPageArtist = new TabPage();
-            openFileDialog1 = new OpenFileDialog();
-            button1 = new Button();
             tabControl1.SuspendLayout();
             tabPageAlbum.SuspendLayout();
             SuspendLayout();
@@ -50,7 +49,7 @@
             // 
             // tabPageAlbum
             // 
-            tabPageAlbum.Controls.Add(button1);
+            tabPageAlbum.Controls.Add(btnSearchAlbum);
             tabPageAlbum.Location = new Point(4, 24);
             tabPageAlbum.Name = "tabPageAlbum";
             tabPageAlbum.Padding = new Padding(3);
@@ -58,6 +57,16 @@
             tabPageAlbum.TabIndex = 0;
             tabPageAlbum.Text = "Album";
             tabPageAlbum.UseVisualStyleBackColor = true;
+            // 
+            // btnSearchAlbum
+            // 
+            btnSearchAlbum.Location = new Point(33, 14);
+            btnSearchAlbum.Name = "btnSearchAlbum";
+            btnSearchAlbum.Size = new Size(126, 23);
+            btnSearchAlbum.TabIndex = 0;
+            btnSearchAlbum.Text = "Browse for Album";
+            btnSearchAlbum.UseVisualStyleBackColor = true;
+            btnSearchAlbum.Click += btnSearchAlbum_Click;
             // 
             // tabPageArtist
             // 
@@ -68,19 +77,6 @@
             tabPageArtist.TabIndex = 1;
             tabPageArtist.Text = "Artist";
             tabPageArtist.UseVisualStyleBackColor = true;
-            // 
-            // openFileDialog1
-            // 
-            openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(33, 14);
-            button1.Name = "button1";
-            button1.Size = new Size(126, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Browse for Album";
-            button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -100,7 +96,6 @@
         private TabControl tabControl1;
         private TabPage tabPageAlbum;
         private TabPage tabPageArtist;
-        private Button button1;
-        private OpenFileDialog openFileDialog1;
+        private Button btnSearchAlbum;
     }
 }

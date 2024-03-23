@@ -1,3 +1,7 @@
+using business.Album;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
 namespace admin
 {
     internal static class Program
@@ -11,7 +15,16 @@ namespace admin
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            var host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddScoped<IAlbumSearcher, AlbumSearcher>();
+                })
+                .Build();
+            var services = host.Services;
+
+            Application.Run(new Form1(services));
         }
     }
 }
