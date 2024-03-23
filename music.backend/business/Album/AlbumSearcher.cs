@@ -16,10 +16,10 @@ namespace business.Album
          *      If found, the function should return an IAlbum object.
          *      
          */
-        public string Search(string directoryPath)
-        {
-            // ToDo: Implement this function
-            return directoryPath;
+        public IAlbum Search(string directoryPath)
+        {            
+            
+            return new Album();
         }
     }
 }

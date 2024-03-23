@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace business.Album
 {
-    public interface IAlbumSearcher
+    internal class Album : IAlbum
     {
-        IAlbum Search(string directoryPath);
+        public string Title { get; }
     }
 }
