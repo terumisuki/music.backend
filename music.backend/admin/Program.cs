@@ -1,6 +1,11 @@
 using business.Album;
+using business.Repository.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.ComponentModel.Design.Serialization;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace admin
 {
@@ -20,6 +25,8 @@ namespace admin
                 .ConfigureServices((context, services) =>
                 {
                     services.AddScoped<IAlbumSearcher, AlbumSearcher>();
+                    services.AddDbContext<AlxLibraryContext>(options =>
+                                    options.UseSqlServer(context.Configuration.GetConnectionString("DefaultConnection")));
                 })
                 .Build();
             var services = host.Services;

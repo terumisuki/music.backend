@@ -26,7 +26,7 @@ namespace admin
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(dialog.SelectedPath))
                 {
-                    MessageBox.Show("The selected directory is: " + dialog.SelectedPath);
+                    //MessageBox.Show("The selected directory is: " + dialog.SelectedPath);
                     _albumSearcher.Search(dialog.SelectedPath);
                 }
             }
