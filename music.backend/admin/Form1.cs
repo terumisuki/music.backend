@@ -1,6 +1,7 @@
 using business.Album;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace admin
 {
@@ -26,10 +27,15 @@ namespace admin
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(dialog.SelectedPath))
                 {
-                    var album = _albumSearcher.Search(dialog.SelectedPath);
-                    MessageBox.Show(album != null ? album.Title : "no album returned");
+                    HandleSelectedPath(dialog.SelectedPath);
                 }
             }
+        }
+
+        private void HandleSelectedPath(string selectedPath)
+        {
+            var album = _albumSearcher.Search(selectedPath);
+            if (album != null) { textBoxAlbumTitle.Text = album.Title; }
         }
     }
 }
