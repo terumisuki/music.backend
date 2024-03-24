@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "api\api.csproj", "{15A64F5B-6AE0-41F5-88DF-14F7365F26F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api", "api\api.csproj", "{15A64F5B-6AE0-41F5-88DF-14F7365F26F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "business", "business\business.csproj", "{94E232CB-C1B6-4949-9B0B-4CAF96BFE853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "business", "business\business.csproj", "{94E232CB-C1B6-4949-9B0B-4CAF96BFE853}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "admin", "admin\admin.csproj", "{757B3EB7-C6F2-40D3-A4A6-E18893CF5A76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "admin", "admin\admin.csproj", "{757B3EB7-C6F2-40D3-A4A6-E18893CF5A76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "business.tests", "business.tests\business.tests.csproj", "{4B6F2615-6BF4-4600-A80C-CE505C9C98D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{757B3EB7-C6F2-40D3-A4A6-E18893CF5A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{757B3EB7-C6F2-40D3-A4A6-E18893CF5A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{757B3EB7-C6F2-40D3-A4A6-E18893CF5A76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B6F2615-6BF4-4600-A80C-CE505C9C98D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B6F2615-6BF4-4600-A80C-CE505C9C98D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B6F2615-6BF4-4600-A80C-CE505C9C98D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B6F2615-6BF4-4600-A80C-CE505C9C98D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

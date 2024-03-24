@@ -1,5 +1,6 @@
 ﻿using business.Repository.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,11 @@ namespace business.Album
     public class AlbumSearcher : IAlbumSearcher
     {
         private readonly AlxLibraryContext _context;
-        public AlbumSearcher(AlxLibraryContext context)
+        private readonly ILogger<AlbumSearcher> _logger;
+        public AlbumSearcher(AlxLibraryContext context, ILogger<AlbumSearcher> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
 
@@ -24,25 +27,31 @@ namespace business.Album
         /// <returns>An IAlbum object representing the found album, or null if no matching album is found.</returns>
         public IAlbum Search(string directoryPath)
         {
-            var track = _context.Media
+            _logger.LogInformation($"Searching for album with directory path: {directoryPath}");
+
+            if (_context.Media == null || _context.Tracks == null || _context.Albums == null)
+            {
+                _logger.LogInformation($"No album found with directory path: {directoryPath}");
+                return null;
+            }
+
+            // Pull any track that has a media file in the given directory
+            var album = _context.Media
                 .Join(_context.Tracks,
                     medium => medium.MediaId,
                     track => track.MediaId,
                     (medium, track) => new { Medium = medium, Track = track })
-                .Where(t => EF.Functions.Like(t.Medium.FileLocation, $"%{directoryPath}\\%"))
-                .Select(t => t.Track)
+                .Join(_context.Albums,
+                    track => track.Track.AlbumId,
+                    album => album.AlbumId,
+                    (track, album) => new { Track = track, Album = album })
+                .Where(t => t.Track.Medium.FileLocation.Contains($"{directoryPath}\\"))
+                .Select(t => t.Album)
                 .FirstOrDefault();
 
-            if (track != null)
+            if (album != null)
             {
-                var albumId = track.AlbumId;
-                // Now you can use albumId to get the Album
-                var album = _context.Albums.Find(albumId);
-                if (album != null) 
-                {
-                    var test = album.Title;
-                    return album as IAlbum;
-                }
+                return new AlbumModel(album);
             }
 
             return null;

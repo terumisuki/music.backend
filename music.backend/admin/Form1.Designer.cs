@@ -32,8 +32,12 @@
             tabPageAlbum = new TabPage();
             btnSearchAlbum = new Button();
             tabPageArtist = new TabPage();
+            panel1 = new Panel();
+            label1 = new Label();
+            textBoxAlbumTitle = new TextBox();
             tabControl1.SuspendLayout();
             tabPageAlbum.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -49,6 +53,7 @@
             // 
             // tabPageAlbum
             // 
+            tabPageAlbum.Controls.Add(panel1);
             tabPageAlbum.Controls.Add(btnSearchAlbum);
             tabPageAlbum.Location = new Point(4, 24);
             tabPageAlbum.Name = "tabPageAlbum";
@@ -60,7 +65,7 @@
             // 
             // btnSearchAlbum
             // 
-            btnSearchAlbum.Location = new Point(33, 14);
+            btnSearchAlbum.Location = new Point(663, 6);
             btnSearchAlbum.Name = "btnSearchAlbum";
             btnSearchAlbum.Size = new Size(126, 23);
             btnSearchAlbum.TabIndex = 0;
@@ -78,6 +83,31 @@
             tabPageArtist.Text = "Artist";
             tabPageArtist.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(textBoxAlbumTitle);
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(8, 40);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(776, 90);
+            panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(23, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(30, 15);
+            label1.TabIndex = 0;
+            label1.Text = "title:";
+            // 
+            // textBoxAlbumTitle
+            // 
+            textBoxAlbumTitle.Location = new Point(67, 14);
+            textBoxAlbumTitle.Name = "textBoxAlbumTitle";
+            textBoxAlbumTitle.Size = new Size(697, 23);
+            textBoxAlbumTitle.TabIndex = 1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -88,6 +118,8 @@
             Text = "Form1";
             tabControl1.ResumeLayout(false);
             tabPageAlbum.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -97,5 +129,8 @@
         private TabPage tabPageAlbum;
         private TabPage tabPageArtist;
         private Button btnSearchAlbum;
+        private Panel panel1;
+        private TextBox textBoxAlbumTitle;
+        private Label label1;
     }
 }

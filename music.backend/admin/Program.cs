@@ -22,6 +22,10 @@ namespace admin
             ApplicationConfiguration.Initialize();
 
             var host = Host.CreateDefaultBuilder()
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddJsonFile("appsettings.json", optional: true);
+                })
                 .ConfigureServices((context, services) =>
                 {
                     services.AddScoped<IAlbumSearcher, AlbumSearcher>();
