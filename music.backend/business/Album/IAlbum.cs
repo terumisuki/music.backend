@@ -8,6 +8,7 @@ namespace business.Album
 {
     public interface IAlbum
     {
+        int AlbumId { get; }
         string Title { get; }
     }
 }
