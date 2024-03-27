@@ -1,4 +1,4 @@
-using business.Album;
+using business.Albums;
 using business.Repository.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

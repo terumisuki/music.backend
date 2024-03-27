@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace business.Album
+namespace business.Tracks
 {
-    public interface IAlbumSearcher
+    public interface ITrack
     {
-        IAlbum Search(string directoryPath);
+        int MediaId { get; }
+        string Title { get; }
     }
 }

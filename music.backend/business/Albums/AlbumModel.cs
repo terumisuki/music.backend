@@ -1,31 +1,36 @@
-﻿using System;
+﻿using business.Repository.Models;
+using business.Tracks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace business.Album
+namespace business.Albums
 {
     public class AlbumModel : IAlbum
     {
         public int AlbumId { get; }
         public string Title { get; }
 
+        public List<ITrack> Tracks { get; }
 
         
         // Map the Album properties to this object
-        public AlbumModel(Repository.Models.Album album)
+        public AlbumModel(Album album, List<ITrack> tracks)
         {
             // Map the Album properties to this object
             this.AlbumId = album.AlbumId;
             this.Title = album.Title;
+            this.Tracks = tracks;
+
         }
 
         // Map this object's properties to an Album object
-        public Repository.Models.Album ToEntity()
+        public Album ToEntity()
         {
             // Create a new Album object and map this object's properties to it
-            return new Repository.Models.Album
+            return new Album
             {
                 // Map properties here
                 AlbumId = this.AlbumId,

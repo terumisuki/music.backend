@@ -30,11 +30,13 @@
         {
             tabControl1 = new TabControl();
             tabPageAlbum = new TabPage();
-            btnSearchAlbum = new Button();
-            tabPageArtist = new TabPage();
             panel1 = new Panel();
-            label1 = new Label();
+            tracksPanel = new Panel();
+            btnSearchAlbum = new Button();
+            label2 = new Label();
             textBoxAlbumTitle = new TextBox();
+            label1 = new Label();
+            tabPageArtist = new TabPage();
             tabControl1.SuspendLayout();
             tabPageAlbum.SuspendLayout();
             panel1.SuspendLayout();
@@ -48,24 +50,43 @@
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(800, 450);
+            tabControl1.Size = new Size(961, 570);
             tabControl1.TabIndex = 0;
             // 
             // tabPageAlbum
             // 
             tabPageAlbum.Controls.Add(panel1);
-            tabPageAlbum.Controls.Add(btnSearchAlbum);
             tabPageAlbum.Location = new Point(4, 24);
             tabPageAlbum.Name = "tabPageAlbum";
             tabPageAlbum.Padding = new Padding(3);
-            tabPageAlbum.Size = new Size(792, 422);
+            tabPageAlbum.Size = new Size(953, 542);
             tabPageAlbum.TabIndex = 0;
             tabPageAlbum.Text = "Album";
             tabPageAlbum.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(tracksPanel);
+            panel1.Controls.Add(btnSearchAlbum);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(textBoxAlbumTitle);
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(947, 536);
+            panel1.TabIndex = 1;
+            // 
+            // tracksPanel
+            // 
+            tracksPanel.Location = new Point(22, 81);
+            tracksPanel.Name = "tracksPanel";
+            tracksPanel.Size = new Size(742, 282);
+            tracksPanel.TabIndex = 3;
+            // 
             // btnSearchAlbum
             // 
-            btnSearchAlbum.Location = new Point(663, 6);
+            btnSearchAlbum.Location = new Point(638, 47);
             btnSearchAlbum.Name = "btnSearchAlbum";
             btnSearchAlbum.Size = new Size(126, 23);
             btnSearchAlbum.TabIndex = 0;
@@ -73,24 +94,21 @@
             btnSearchAlbum.UseVisualStyleBackColor = true;
             btnSearchAlbum.Click += btnSearchAlbum_Click;
             // 
-            // tabPageArtist
+            // label2
             // 
-            tabPageArtist.Location = new Point(4, 24);
-            tabPageArtist.Name = "tabPageArtist";
-            tabPageArtist.Padding = new Padding(3);
-            tabPageArtist.Size = new Size(792, 422);
-            tabPageArtist.TabIndex = 1;
-            tabPageArtist.Text = "Artist";
-            tabPageArtist.UseVisualStyleBackColor = true;
+            label2.AutoSize = true;
+            label2.Location = new Point(22, 47);
+            label2.Name = "label2";
+            label2.Size = new Size(78, 15);
+            label2.TabIndex = 2;
+            label2.Text = "year released:";
             // 
-            // panel1
+            // textBoxAlbumTitle
             // 
-            panel1.Controls.Add(textBoxAlbumTitle);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(8, 40);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(776, 90);
-            panel1.TabIndex = 1;
+            textBoxAlbumTitle.Location = new Point(67, 14);
+            textBoxAlbumTitle.Name = "textBoxAlbumTitle";
+            textBoxAlbumTitle.Size = new Size(697, 23);
+            textBoxAlbumTitle.TabIndex = 1;
             // 
             // label1
             // 
@@ -101,18 +119,21 @@
             label1.TabIndex = 0;
             label1.Text = "title:";
             // 
-            // textBoxAlbumTitle
+            // tabPageArtist
             // 
-            textBoxAlbumTitle.Location = new Point(67, 14);
-            textBoxAlbumTitle.Name = "textBoxAlbumTitle";
-            textBoxAlbumTitle.Size = new Size(697, 23);
-            textBoxAlbumTitle.TabIndex = 1;
+            tabPageArtist.Location = new Point(4, 24);
+            tabPageArtist.Name = "tabPageArtist";
+            tabPageArtist.Padding = new Padding(3);
+            tabPageArtist.Size = new Size(953, 542);
+            tabPageArtist.TabIndex = 1;
+            tabPageArtist.Text = "Artist";
+            tabPageArtist.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(961, 570);
             Controls.Add(tabControl1);
             Name = "Form1";
             Text = "Form1";
@@ -132,5 +153,7 @@
         private Panel panel1;
         private TextBox textBoxAlbumTitle;
         private Label label1;
+        private Label label2;
+        private Panel tracksPanel;
     }
 }

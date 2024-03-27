@@ -1,4 +1,5 @@
 ﻿using business.Repository.Models;
+using business.Tracks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace business.Album
+namespace business.Albums
 {
     public class AlbumSearcher : IAlbumSearcher
     {
@@ -36,22 +37,33 @@ namespace business.Album
             }
 
             // Pull any track that has a media file in the given directory
-            var album = _context.Media
-                .Join(_context.Tracks,
-                    medium => medium.MediaId,
-                    track => track.MediaId,
-                    (medium, track) => new { Medium = medium, Track = track })
-                .Join(_context.Albums,
-                    track => track.Track.AlbumId,
-                    album => album.AlbumId,
-                    (track, album) => new { Track = track, Album = album })
-                .Where(t => t.Track.Medium.FileLocation.Contains($"{directoryPath}\\"))
-                .Select(t => t.Album)
-                .FirstOrDefault();
+            var albumWithTracks = _context.Albums
+                .ToList() // Load the albums into memory
+                .Select(album => new
+                {
+                    Album = album,
+                    Tracks = _context.Tracks
+                        .Where(track => track.AlbumId == album.AlbumId)
+                        .Join(_context.Media,
+                            track => track.MediaId,
+                            medium => medium.MediaId,
+                            (track, medium) => new { Track = track, Medium = medium })
+                        .Where(t => t.Medium.FileLocation.Contains($"{directoryPath}\\"))
+                        .ToList()
+                })
+                .FirstOrDefault(a => a.Tracks.Any()); // Get the first album that has any tracks
 
-            if (album != null)
+            if (albumWithTracks != null)
             {
-                return new AlbumModel(album);
+                // Assemble the Tracks
+                var tracks = albumWithTracks.Tracks
+                    .Select(t => new TrackModel(t.Track, t.Medium) as ITrack)
+                    .ToList();
+
+                // Assemble the Album
+                var album = new AlbumModel(albumWithTracks.Album, tracks);
+
+                return album;
             }
 
             return null;
