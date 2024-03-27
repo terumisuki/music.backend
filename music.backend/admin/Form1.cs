@@ -16,21 +16,39 @@ namespace admin
 
         private IAlbumSearcher _albumSearcher;
 
-        //  This function would let the user select a directory from only the InitialDirectory           
-        //  It should only allow the selection of a Directory and not a File.
+        
+        
         private void btnSearchAlbum_Click(object sender, EventArgs e)
+        {
+            HandleSearchAlbumClick(@"\\chopin\alxAudio");
+        }
+
+
+        private void HandleSearchAlbumClick(string initialDirectory)
+        {
+            string selectedPath = ShowDialogAndGetSelectedPath(initialDirectory);
+            if (selectedPath != null)
+            {
+                SearchForAndLoadAlbumIntoUi(selectedPath);
+            }
+        }
+        
+        public string ShowDialogAndGetSelectedPath(string initialDirectory)
         {
             using (var dialog = new FolderBrowserDialog())
             {
-                dialog.InitialDirectory = @"\\chopin\alxAudio";
+                dialog.InitialDirectory = initialDirectory;
                 DialogResult result = dialog.ShowDialog();
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(dialog.SelectedPath))
                 {
-                    SearchForAndLoadAlbumIntoUi(dialog.SelectedPath);
+                    return dialog.SelectedPath;
                 }
             }
+
+            return null;
         }
+
 
         private void SearchForAndLoadAlbumIntoUi(string selectedPath)
         {
